@@ -2,7 +2,8 @@
 
 #TEST FOR PRG-HW05 (should be identical with test for PRG-HW03)
 
-#author: Michal Matiáš
+#author: odvaznymladymuz matiamic@fel.cvut.cz
+#https://www.youtube.com/watch?v=qyJbYVciah0
 
 shopt -s nullglob
 

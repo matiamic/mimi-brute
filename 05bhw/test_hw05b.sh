@@ -1,8 +1,9 @@
 #!/bin/bash
 
-#TEST FOR PRG-HW05 (should be identical with test for PRG-HW03)
+#TEST FOR PRG-HW05b
 
-#author: Michal Matiáš
+#author: odvaznymladymuz matiamic@fel.cvut.cz
+#https://www.youtube.com/watch?v=qyJbYVciah0
 
 shopt -s nullglob
 
