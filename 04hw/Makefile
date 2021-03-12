@@ -14,7 +14,7 @@ clean:
 	$(RM) $(HW)-brute.zip
 
 test:
-	bash -x ./test_hw04.sh $(HW)
+	./test_hw04.sh $(HW)
 
 testo:
 	./test_hw04.sh $(HW) opt

@@ -16,6 +16,13 @@ timeout_func='timeout -s KILL '$timeout_sec #substitue with '' if timeout doesn'
 
 vimoptions="+set splitright | set splitbelow"
 
+vim --version &> /dev/null
+got_vim=$?  # zero if installed
+
+valgrind --version &> /dev/null
+got_valgrind=$? # zero if installed
+
+
 if [ $# -lt 1 ]
 then
     echo 'Je treba zadat filename programu'
@@ -93,14 +100,19 @@ do
         if [ $? -ne 0 ]
         then
             tput setaf 1; echo 'Nesedi stdout u problemu' $problemname; tput sgr0;
-            read -p 'Otevrit ve vimdiffu? (y/n)[n]' openvimdiff 
-            if [ -z $openvimdiff ]
+            if [ $got_vim -eq 0 ] # vim installed
             then
-                openvimdiff='n'
-            fi
-            if [ $openvimdiff = 'y' ]
-            then
-                vim "$vimoptions" $problempath.in "+split $path/out" "+vert diffsplit $problempath.out"
+                read -p 'Otevrit ve vimdiffu? (y/n)[n]' openvimdiff 
+                if [ -z $openvimdiff ]
+                then
+                    openvimdiff='n'
+                fi
+                if [ $openvimdiff = 'y' ]
+                then
+                    vim "$vimoptions" $problempath.in "+split $path/out" "+vert diffsplit $problempath.out"
+                fi
+            else
+                echo 'Pro plnou funkcionalitu nainstatulj vim'
             fi
         else
             tput setaf 2; echo 'Stdout u problemu' $problemname 'OK.'; tput sgr0;
@@ -110,14 +122,19 @@ do
         if [ $? -ne 0 ]
         then
             tput setaf 1; echo  'Nesedi stderr u problemu' $problemname; tput sgr0;
-            read -p 'Otevrit ve vimdiffu? (y/n)[n]' openvimdiff 
-            if [ -z $openvimdiff ]
+            if [ $got_vim -eq 0 ] # vim installed
             then
-                openvimdiff='n'
-            fi
-            if [ $openvimdiff = 'y' ]
-            then
-                vim $vimoptions $problempath.in "+split $path/err" "+vert diffsplit $problempath.err"
+                read -p 'Otevrit ve vimdiffu? (y/n)[n]' openvimdiff 
+                if [ -z $openvimdiff ]
+                then
+                    openvimdiff='n'
+                fi
+                if [ $openvimdiff = 'y' ]
+                then
+                    vim "$vimoptions" $problempath.in "+split $path/err" "+vert diffsplit $problempath.err"
+                fi
+            else
+                echo 'Pro plnou funkcionalitu nainstatulj vim'
             fi
         else
             tput setaf 2; echo 'Stderr u problemu' $problemname 'OK.'; tput sgr0;
@@ -134,7 +151,7 @@ do
     #end eval
 
     #VALGRIND
-    if valgrind --version &> /dev/null
+    if [ $got_valgrind -eq 0 ]
     then
         if [ $redirect -eq 0 ] 
         then

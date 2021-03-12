@@ -84,7 +84,7 @@ do
                     vim "$vimoptions" $problempath.in "+split $path/out" "+vert diffsplit $problempath.out"
                 fi
             else
-                echo 'Pro plnou funckionalitu nainstatulj vim'
+                echo 'Pro plnou funkcionalitu nainstatulj vim'
             fi
         else
             tput setaf 2; echo 'Stdout u problemu' $problemname 'OK.'; tput sgr0;
@@ -106,7 +106,7 @@ do
                     vim "$vimoptions" $problempath.in "+split $path/err" "+vert diffsplit $problempath.err"
                 fi
             else
-                echo 'Pro plnou funckionalitu nainstatulj vim'
+                echo 'Pro plnou funkcionalitu nainstatulj vim'
             fi
         else
             tput setaf 2; echo 'Stderr u problemu' $problemname 'OK.'; tput sgr0;
