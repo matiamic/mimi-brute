@@ -1,5 +1,5 @@
 # mimi-brute
-Platformička pro testování úkolů na PRG
+### Platformička pro testování úkolů na PRG
 
 ## co to umi?
 ### * otestovat tvoje reseni uloh z PRG pomoci verejnych zadani (ze zipu z coursewaru)
@@ -8,9 +8,10 @@ Platformička pro testování úkolů na PRG
 ### * zobrazit exit kody
 
 ## je to izi
-napis do prikazove radky `git clone https://github.com/matiamic/mimi-brute`
+### 1] napis do prikazove radky `git clone https://github.com/matiamic/mimi-brute`
 
-nahrej do odpovidajici slozky svuj zdrojak (jeden/vice souboru, je to fuk), muzes to v tech slozkach klidne i programovat (mozna idealni reseni),  
-zkompiluj pomoci `make` a otestuj pomoci `make test`, pripadne `make testo` pro volitelne zadani 
+### 2] nahrej do odpovidajici slozky svuj zdrojak (jeden/vice souboru, je to fuk), muzes to v tech slozkach klidne i programovat (mozna idealni reseni)
+
+### 3] zkompiluj pomoci `make` a otestuj pomoci `make test`, pripadne `make testo` pro volitelne zadani 
 
 
