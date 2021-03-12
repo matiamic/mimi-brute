@@ -2,10 +2,10 @@
 Platformička pro testování úkolů na PRG
 
 ## co to umi?
-###otestovat tvoje reseni uloh z PRG pomoci verejnych zadani (ze zipu z coursewaru)
-###vyhodnotit memory leaky/segfaulty pomoci valgrinda
-###zobrazit vstupni a vystupni hodnoty pro reseni neodpovidajici referenci
-###zobrazit exit kody
+### otestovat tvoje reseni uloh z PRG pomoci verejnych zadani (ze zipu z coursewaru)
+### vyhodnotit memory leaky/segfaulty pomoci valgrinda
+### zobrazit vstupni a vystupni hodnoty pro reseni neodpovidajici referenci
+### zobrazit exit kody
 
 ## je to izi
 napis do prikazove radky `git clone https://github.com/matiamic/mimi-brute`
