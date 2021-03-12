@@ -8,7 +8,7 @@
 ### * zobrazit exit kody
 
 ## obsluha je typu easy
-### 1) napis do prikazove radky `git clone https://github.com/matiamic/mimi-brute`
+### 1) naklonuj si: `git clone https://github.com/matiamic/mimi-brute`
 
 ### 2) nahrej do odpovidajici slozky svuj zdrojak (jeden/vice souboru, je to fuk), muzes to v tech slozkach klidne i programovat (mozna idealni reseni)
 
