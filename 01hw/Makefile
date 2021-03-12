@@ -14,6 +14,6 @@ clean:
 	$(RM) $(HW)-brute.zip
 
 test:
-	bash ./test_hw01.sh $(HW)
+	./test_hw01.sh $(HW)
 
 .PHONY: clean zip
