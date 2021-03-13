@@ -17,7 +17,7 @@ note: pro zobrazeni outputu je potreba mit nainstalovany vim, pro valgrind je po
 ### 3) zkompiluj pomoci `make` a otestuj pomoci `make test`, pripadne `make testo` pro volitelne zadani 
 
 
-### kdyby cokoliv, nevahej me kontaktovat na matiamic@fel.cvut.cz
+### kdyby cokoliv, nevahej mi napsat na matiamic@fel.cvut.cz
 
 ### ukazka vystupu reseni volitelneho zadani ulohy 4:  
 ![Screen Shot 2021-03-12 at 14 48 33](https://user-images.githubusercontent.com/62507257/110949275-b30d3700-8342-11eb-85c8-18aa0a01ec76.png)
