@@ -53,7 +53,10 @@ do
     problemname=$(echo $problempath | cut -d'/' -f 3-)
 
     echo -n 'Srovnavam problem '; tput setaf 3; echo $problemname; tput sgr0;
+    #EXECUTION
     $timeout_func ./$program < $problempath.in > $path/out 2> $path/err
+    #end execution
+    #EVAL
     err=$?
     segfault=0
     if [ $err -eq $kill_exit_code ] # 137 means timeout sent kill signal
@@ -120,7 +123,7 @@ do
     if [ $got_valgrind -eq 0 ]
     then
         valgrind --leak-check=full --error-exitcode=$valgrind_exit_code ./$program < $problempath.in &> $path/valgrind.txt
-        if [ $? -eq $valgrind_exit_code ]
+        if [ $err -eq $valgrind_exit_code ] || [ $segfault -eq 1 ]
         then
             tput setaf 1; echo 'Valgrindrovi se to nelibi'; tput sgr0;
             read -p 'Otevrit jeho vystup ve vimu? (y/n)[n]' openvim 

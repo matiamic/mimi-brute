@@ -61,12 +61,12 @@ do
         echo 'REDIRECT'
         redirect=1
     fi
-    if [[ $problemname == *'-B'* ]] # checks whether problem name contatins '-A'
+    if [[ $problemname == *'-B'* ]] # checks whether problem name contatins '-B'
     then
         echo 'REGEX'
         options+='-E '
     fi
-    if [[ $problemname == *'-C'* ]] # checks whether problem name contatins '-A'
+    if [[ $problemname == *'-C'* ]] # checks whether problem name contatins '-C'
     then
         echo 'COLOR'
         options+='--color=always '
