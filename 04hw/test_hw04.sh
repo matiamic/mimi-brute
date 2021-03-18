@@ -171,7 +171,7 @@ do
             fi
             if [ $openvim = 'y' ]
             then
-                vim $path/valgrind.txt
+                vim "$vimoptions" $path/valgrind.txt "+vsp $problempath.in"
             fi
         else
             tput setaf 2; echo 'Valgrind u problemu' $problemname 'OK.'; tput sgr0;
