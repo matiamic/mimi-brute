@@ -9,6 +9,8 @@
 
 note: pro zobrazeni outputu je potreba mit nainstalovany vim, pro valgrind je potreba mit valgrind, ale vysledky to bude srovnavat i bez nich
 
+note2: pro nevimaře: pro zavreni vsech oken vimu zmackni `esc` (pro jistotu, kdybys byl v jinem nez normalnim modu) a potom napis `:qa!` ((vykricnik, je potreba jenom, pokud jsi neco v souborech editoval))
+
 ## obsluha je typu easy
 ### 1) naklonuj si: `git clone https://github.com/matiamic/mimi-brute`
 
