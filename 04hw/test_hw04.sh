@@ -87,6 +87,20 @@ do
     if [ $err -eq $kill_exit_code ] # 137 means timeout sent kill signal
     then
         tput setaf 1; echo  'TIMEOUT u problemu' $problemname 'po' $timeout_sec's'; tput sgr0;
+        if [ $got_vim -eq 0 ] # vim installed
+        then
+            read -p 'Zobrazit vstup ve vimu? (y/n)[n]' openvimdiff 
+            if [ -z $openvimdiff ]
+            then
+                openvimdiff='n'
+            fi
+            if [ $openvimdiff = 'y' ]
+            then
+                vim $problempath.in
+            fi
+        else
+            echo 'Pro plnou funkcionalitu nainstaluj vim'
+        fi
         echo ''
         continue
     fi
