@@ -1,4 +1,4 @@
-CFLAGS+=  -pedantic -Wall -std=c99 -O3
+CFLAGS+=  -pedantic -Wall -std=c99 -O0 -g
 HW=hw03-b3b36prg
 ZIP=zip
 
