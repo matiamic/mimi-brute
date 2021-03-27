@@ -136,6 +136,7 @@ do
     if [ $got_valgrind -eq 0 ]
     then
         valgrind --leak-check=full --error-exitcode=$valgrind_exit_code ./$program < $problempath.in &> $path/valgrind.txt
+        err=$?
         if [ $err -eq $valgrind_exit_code ] || [ $segfault -eq 1 ]
         then
             tput setaf 1; echo 'Valgrindrovi se to nelibi'; tput sgr0;
