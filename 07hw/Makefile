@@ -1,4 +1,4 @@
-CFLAGS+=  -pedantic -Wall -std=c99 -O3
+CFLAGS+=  -pedantic -Wall -std=c99 -O0 -g
 HW=hw06-b3b36prg
 ZIP=zip
 
@@ -23,5 +23,14 @@ clean:
 	$(RM) *.o
 	$(RM) $(HW) libqueue.so
 	$(RM) $(HW)-brute.zip
+
+testf:
+	./test_hw07_faigl.sh
+
+test:
+	./test_hw07.sh $(HW)
+
+testo:
+	./test_hw07.sh $(HW) opt
 
 .PHONY: clean zip
