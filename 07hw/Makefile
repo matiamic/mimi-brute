@@ -1,36 +1,35 @@
-CFLAGS+=  -pedantic -Wall -std=c99 -O0 -g
-HW=hw06-b3b36prg
-ZIP=zip
+CFLAGS+= -Wall -Werror -std=c99 -g
 
-all: $(HW) lib
+HW=hw07
 
-$(HW): main.c queue.o
-	$(CC) $(CFLAGS) main.c queue.o -o $(HW)
+BINARIES=hw07-test hw07-testopt-int hw07-testopt-str hw07-testopt-stc
+all: $(BINARIES)
 
-queue.o: queue.c queue.h
-	$(CC) $(CFLAGS) -c queue.c -o queue.o
+hw07-man: hw07-test
 
-libqueue.so: queue.c queue.h
-	$(CC) $(CFLAGS) -fPIC -shared queue.c -o libqueue.so
-	$(STRIP) $(lib)
+hw07-opt: hw07-testopt-int hw07-testopt-str hw07-testopt-stc
 
-lib: libqueue.so
+hw07-test: hw07-test.c linked_list.o
+	$(CC) $(CFLAGS) hw07-test.c linked_list.o -o $@
 
+hw07-testopt-int: hw07-testopt-int.c queue.o
+	$(CC) $(CFLAGS) hw07-testopt-int.c queue.o -o $@
+
+hw07-testopt-str: hw07-testopt-str.c queue.o
+	$(CC) $(CFLAGS) hw07-testopt-str.c queue.o -o $@
+
+hw07-testopt-stc: hw07-testopt-stc.c queue.o
+	$(CC) $(CFLAGS) hw07-testopt-stc.c queue.o -o $@
+
+linked_list.o: linked_list.c 
+	$(CC) -c $(CFLAGS) $< -o $@
+
+queue.o: queue.c 
+	$(CC) -c $(CFLAGS) $< -o $@
+	
 zip:
-	$(ZIP) $(HW)-brute.zip queue.h queue.c
-
+	zip $(HW)-brute.zip linked_list.c queue.c
+	
 clean:
-	$(RM) *.o
-	$(RM) $(HW) libqueue.so
-	$(RM) $(HW)-brute.zip
-
-testf:
-	./test_hw07_faigl.sh
-
-test:
-	./test_hw07.sh $(HW)
-
-testo:
-	./test_hw07.sh $(HW) opt
-
-.PHONY: clean zip
+	rm -f *.o $(BINARIES)
+	rm -f $(HW)-brute.zip
