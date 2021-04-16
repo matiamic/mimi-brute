@@ -16,7 +16,8 @@ note: pro zobrazeni outputu je potreba mit nainstalovany vim, pro valgrind je po
 
 ### 3) zkompiluj pomoci `make` a otestuj pomoci `make test`, pripadne `make testo` pro volitelne zadani 
 
-note2: ulohy 06 a 07 maji jeste moznost `make testf`, ktera spusti testovaci skript prilozeny v balicku z coursewaru
+note2: uloha 06 ma jeste moznost `make testf`, ktera spusti testovaci skript prilozeny v balicku z coursewaru  
+uloha 07 ma navic moznosti `make test-int`, `make test-str` a `make test-stc`, ktere testuji link list pro odpovidajici format dat
 
 note3: pro nevimaře: pro zavreni vsech oken vimu zmackni `esc` (pro jistotu, kdybys byl v jinem nez normalnim modu) a potom napis `:qa!` ((vykricnik, je potreba jenom, pokud jsi neco v souborech editoval)), mezi okny se prepina stisknutim `ctrl + W` a pak sipky smerem k oknu, do ktereho chces prepnout
 

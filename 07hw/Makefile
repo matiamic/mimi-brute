@@ -1,4 +1,4 @@
-CFLAGS+= -Wall -Werror -std=c99 -g
+CFLAGS+= -Wall -Werror -std=c99 -O0 -g
 
 HW=hw07
 
@@ -33,3 +33,24 @@ zip:
 clean:
 	rm -f *.o $(BINARIES)
 	rm -f $(HW)-brute.zip
+
+test:
+	./test_hw07.sh $(HW)-test
+
+testo:
+	echo "TESTING int:"
+	./test_hw07.sh $(HW)-testopt-int int
+	echo "TESTING str:"
+	./test_hw07.sh $(HW)-testopt-str str
+	echo "TESTING stc:"
+	./test_hw07.sh $(HW)-testopt-stc stc
+
+test-int:
+	./test_hw07.sh $(HW)-testopt-int int
+
+test-str:
+	./test_hw07.sh $(HW)-testopt-str str
+
+test-stc:
+	./test_hw07.sh $(HW)-testopt-stc stc
+

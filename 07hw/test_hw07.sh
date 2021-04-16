@@ -34,9 +34,15 @@ program=$1
 
 if [ $# -gt 1 ]
 then
-    if [ $2 = 'opt' ]
+    if [ $2 = 'int' ]
     then
-        path+=opt/
+        path+=opt_int/
+    elif [ $2 = 'str' ]
+    then
+        path+=opt_str/
+    elif [ $2 = 'stc' ]
+    then
+        path+=opt_stc/
     else
         echo 'Nerozumim argumentum'
         exit 2;
@@ -45,7 +51,7 @@ else
     path+=man/
 fi
 
-for file in $(find $path -name '*.in');
+for file in $(find $path -name '*.txt');
 do
     problempath=.$(echo $file | cut -d'.' -f 2) # cuts path into 3 parts divided by '.',
     #then returns the second one, auxiliary
@@ -53,7 +59,7 @@ do
 
     echo -n 'Srovnavam problem '; tput setaf 3; echo $problemname; tput sgr0;
     #EXECUTION
-    $timeout_func ./$program < $problempath.in > $path/out 2> $path/err
+    $timeout_func ./$program < $problempath.txt > $path/out 2> $path/err
     #end execution
     #EVAL
     err=$?
@@ -85,7 +91,7 @@ do
     fi
     if [ $segfault -eq 0 ] # don't compare segfaulted
     then
-        cmp -s $path/out $problempath.out
+        cmp -s $path/out $problempath.stdout
         if [ $? -ne 0 ]
         then
             tput setaf 1; echo 'Nesedi stdout u problemu' $problemname; tput sgr0;
@@ -98,7 +104,7 @@ do
                 fi
                 if [ $openvimdiff = 'y' ]
                 then
-                    vim "$vimoptions" $problempath.in "+split $path/out" "+vert diffsplit $problempath.out"
+                    vim "$vimoptions" $problempath.in "+split $path/out" "+vert diffsplit $problempath.stdout"
                 fi
             else
                 echo 'Pro plnou funkcionalitu nainstaluj vim'
@@ -107,20 +113,19 @@ do
             tput setaf 2; echo 'Stdout u problemu' $problemname 'OK.'; tput sgr0;
         fi
 
-        cmp -s $path/err $problempath.err
-        if [ $? -ne 0 ]
+        if [ -s $path/err ]  #proceeds if err is not empty
         then
-            tput setaf 1; echo  'Nesedi stderr u problemu' $problemname; tput sgr0;
+            tput setaf 1; echo  'Stderr u problemu' $problemname 'neni prazdny'; tput sgr0;
             if [ $got_vim -eq 0 ] # vim installed
             then
-                read -p 'Otevrit ve vimdiffu? (y/n)[n]' openvimdiff 
+                read -p 'Otevrit ve vimu? (y/n)[n]' openvimdiff 
                 if [ -z $openvimdiff ]
                 then
                     openvimdiff='n'
                 fi
                 if [ $openvimdiff = 'y' ]
                 then
-                    vim "$vimoptions" $problempath.in "+split $path/err" "+vert diffsplit $problempath.err"
+                    vim "$vimoptions" $problempath.in "+vsplit $path/err"
                 fi
             else
                 echo 'Pro plnou funkcionalitu nainstaluj vim'
@@ -135,7 +140,7 @@ do
     #VALGRIND
     if [ $got_valgrind -eq 0 ]
     then
-        valgrind --leak-check=full --error-exitcode=$valgrind_exit_code ./$program < $problempath.in &> $path/valgrind.txt
+        valgrind --leak-check=full --error-exitcode=$valgrind_exit_code ./$program < $problempath.txt &> $path/valgrind.out
         err=$?
         if [ $err -eq $valgrind_exit_code ] || [ $segfault -eq 1 ]
         then
@@ -147,7 +152,7 @@ do
             fi
             if [ $openvim = 'y' ]
             then
-                vim "$vimoptions" $path/valgrind.txt "+vsp $problempath.in"
+                vim "$vimoptions" $path/valgrind.out "+vsp $problempath.txt"
             fi
         else
             tput setaf 2; echo 'Valgrind u problemu' $problemname 'OK.'; tput sgr0;
